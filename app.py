@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, session, g
 from database import Database
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -11,9 +11,12 @@ app = Flask(__name__)
 #         db.close()
 
 def get_current_user():
-    user_result = None
+    user_result = None # global variable set to none 
     if 'user' in session:
-        user = session['user']
+        user = session['user'] # get user from session and store in variable
+        db = Database().connect() # connect to database
+        user_cursor = db.execute("SELECT * FROM users WHERE name = ?", [user]) # execute query to check if user exists in the database
+        user_result = user_cursor.fetchone() # fetch the result of the query 
 
 @app.route("/")
 def index():
