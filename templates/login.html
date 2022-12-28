@@ -14,15 +14,21 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="/static/style.css" />
+
   </head>
   <body>
     <div class="parent">
-      <div class="header mb-2">{{ show_links() }}</div>
+      <div class="header mb-2">{{ show_links(user) }}</div>
 
       <div class="questions_answered p-3">
         <h1>Login</h1>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endif %}
         <hr />
-        <form>
+        <form action="/login" method="post">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
             <input
