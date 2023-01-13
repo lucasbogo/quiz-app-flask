@@ -16,44 +16,24 @@
     />
 
     <link rel="stylesheet" href="/static/style.css" />
-
-    </head>
+  </head>
   <body class="body">
     <div class="parent">
       <div class="header mb-2">{{ show_links(user) }}</div>
-      
-    <div class="questions_answered">
-      <h1>Questions Answered</h1>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Total Questions</h5>
-                <p class="card-text">100</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Total Correct</h5>
-                <p class="card-text">100</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Total Incorrect</h5>
-                <p class="card-text">100</p>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div class="questions_answered container">
+        <h1>Usuários</h1>
+        {% if user %} {% for eachuser in users %}
+        <a href="{{ url_for('promote', id = eachuser[0])}}" class="text-light">
+          Nome : {{ eachuser [1] }} <br />
+          Professor : {{ eachuser [3] }} <br />
+          Admin : {{ eachuser [4] }}
+          <hr />
+        </a>
+        {% endfor %} {% endif %}
       </div>
     </div>
- 
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

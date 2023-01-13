@@ -1,0 +1,57 @@
+{% from "showlinks.html" import show_links %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous" />
+
+		<link rel="stylesheet" href="/static/style.css" />
+	</head>
+	<body class="body">
+		<div class="parent">
+			<div class="header mb-2">{{ show_links(user) }}</div>
+
+			<div class="questions_answered p-3">
+				<h1>Responder</h1>
+
+				<hr class="text-light" />
+                <div>
+                    <h3>{{ question[1] }}</h3>
+                    <p>Autor: {{ question[3] }}</p>
+                </div>
+				<form action="{{url_for('answer')}}" method="post">
+					<div class="form-floating mb-3">
+						<textarea
+							class="form-control text-dark"
+							placeholder="Insira sua resposta aqui"
+							id="floatingTextarea2"
+							name="answer"
+							style="height: 100px">
+						</textarea>
+						<label for="floatingTextarea2" class="text-dark"
+							>Insira sua resposta aqui</label
+						>
+					</div>
+
+					<button type="submit" class="btn btn-success"
+						>Responder</button
+					>
+				</form>
+			</div>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"></script>
+	</body>
+</html>

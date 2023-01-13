@@ -1,9 +1,14 @@
 .body {
-    background-color: #c2f8d0;
-    color: #0a0101;
+    background-color: #001f08;
+    color: #ffffff;
 }
 
 .header {
+    background-color: #01381d;
+    color: #ffffff;
+}
+
+.card-body {
     background-color: #01381d;
     color: #ffffff;
 }
